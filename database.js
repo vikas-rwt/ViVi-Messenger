@@ -8,10 +8,10 @@ mongoose.connection.on("connected",()=>{
 })
 
 userSchema = {
-    "fullName":String,
     "email":String,
     "password":String,
-    "age":Number
+    "fullName":String,
+    "age":Number,
 }
 userDetails = mongoose.model("user_details",userSchema)
 
