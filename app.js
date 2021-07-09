@@ -92,22 +92,3 @@ app.listen(PORT,()=>{
     console.log(`Server started on port ${PORT}`)
 })
 
-
-
-// db.register(req.body.name,req.body.email,req.body.password,req.body.age,function(error,call_back){
-//     //     if(error){
-//     //         console.log(error)
-//     //     }else{
-//     //         console.log(`CB : ${call_back}`)
-//     //     }
-//     // })
-
-
-// db.login(req.body.email,req.body.password,function(error,authe){
-//     if(error){
-//         console.log(`Error : ${error}`)
-//     }else{
-//         console.log(`Login : ${authe}`)
-//     }
-// })
-// res.send("done")
