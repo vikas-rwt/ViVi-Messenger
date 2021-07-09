@@ -32,6 +32,14 @@
         }
     }
         
+
+    .sign-up-btn{
+        border-radius: 25px;
+        color: #fff;
+        background: #000;
+        border: none;
+        padding: 8px 16px;
+    }
     
 }
 
@@ -55,13 +63,18 @@
 
 #form{
     text-align: center;
-    
+
+    .btn:hover{
+        color: #999;
+    }
+
     .form-inside{
-        padding: 20px;
+        padding: 20px 0 10px 0;
         border: 1px solid #dadde1;
         max-width: 90%;
         margin: 0 auto;
         border-radius: 25px;
+        
     }
 
     .loginForm{
@@ -77,15 +90,22 @@
             width: 250px;
             padding: 10px;
             background: #eee;
-            border: 1px solid transparent;
+            border: none;
+            border-radius: 5px;
             outline: none;
         }
     }
 
-    .submit_btn {
+    .submit_btn {  
         padding-top: 20px;
+        
         .btn{
-            width: 200px
+            width: 200px;
+            border-radius: 20px;
+
+            &:hover{
+                z-index: 10;
+            }
         }
     }
 
@@ -93,7 +113,7 @@
         align-items: center;
         border-bottom: 1px solid #dadde1;
         display: flex;
-        margin: 20px 0;
+        margin: 20px 40px;
         text-align: center;
     }
     
@@ -110,7 +130,12 @@
             .btn {
                 line-height: 1;
                 border-radius: 25px;
-                padding: 15px 0;
+                padding: 13px 0;
+            }
+
+            .btn:hover{
+                background-color: #999;
+                border: none;
             }
 
             .btn-facebook{
@@ -140,5 +165,28 @@
 
 }
 
+footer{
 
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 1280px;
+    padding: 20px;
 
+    a {
+        text-decoration: none;
+        color: inherit;
+
+        &:hover {
+            color: #999;
+        }
+    }
+
+    // .copyright{
+    //     padding: 25px;
+        
+    // }
+}
+
+}
