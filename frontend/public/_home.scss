@@ -1,0 +1,144 @@
+#navbar{
+    display: flex;
+    justify-content: space-between;
+    max-width: 90%;
+    margin: 0 auto;
+    align-items: center;
+    height: 100px;
+
+    .logo {
+        font-size: 3rem;
+    }
+
+    ul{
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        
+        li{ 
+            display: inline-block;
+        }
+            
+        a{  
+            font-weight: 600;
+            text-decoration: none;
+            color: #000;
+            margin: 0 30px;
+    
+            &:hover{
+                text-decoration: none;
+                color: #999;
+            }
+        }
+    }
+        
+    
+}
+
+#hero {
+    padding: 50px 0;
+    display: flex;
+
+    .container {
+        max-width: 1260px;
+    }
+
+    h1 {
+        font-size: 5rem;
+        padding-bottom: 20px;
+    }
+
+    h3 {
+        font-size: 2.5rem;
+    }
+}
+
+#form{
+    text-align: center;
+    
+    .form-inside{
+        padding: 20px;
+        border: 1px solid #dadde1;
+        max-width: 90%;
+        margin: 0 auto;
+        border-radius: 25px;
+    }
+
+    .loginForm{
+        padding: 10px 0;
+    }
+
+    .input{
+        display: flex;
+        justify-content: center;
+        padding: 10px 0;
+
+        .input_field{
+            width: 250px;
+            padding: 10px;
+            background: #eee;
+            border: 1px solid transparent;
+            outline: none;
+        }
+    }
+
+    .submit_btn {
+        padding-top: 20px;
+        .btn{
+            width: 200px
+        }
+    }
+
+    .hr{
+        align-items: center;
+        border-bottom: 1px solid #dadde1;
+        display: flex;
+        margin: 20px 0;
+        text-align: center;
+    }
+    
+
+    .social-login {
+        display: block;
+        justify-content: center;
+        width: 300px;
+        margin: 0 auto;
+
+        .col {
+            padding: 10px 0;
+
+            .btn {
+                line-height: 1;
+                border-radius: 25px;
+                padding: 15px 0;
+            }
+
+            .btn-facebook{
+                background: #3b5998;
+                color: #fff;
+            }
+
+            .btn-gmail{
+                border: 1px solid #000
+            }
+            .btn-twitter{
+                border: 1px solid #000
+            }
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .fab {
+            padding-right: 10px;
+        }
+
+    }
+        
+
+}
+
+
+
