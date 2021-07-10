@@ -1,0 +1,103 @@
+section{
+    padding: 50px 0
+}
+#sign-up-form{
+    height: 100vh;
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: center;
+    border: 1px solid rgb(212, 212, 212);
+    border-radius: 5px;
+
+
+    .heading{
+        font-size: 2.5rem;
+        padding-top: 20px;
+    }
+
+    .subheading{
+        font-size: 1rem;
+    }
+
+    #signUpForm{
+        padding-top: 30px;
+
+        .signUp_input{
+            padding: 5px 0;
+
+            input{
+                width: 300px;
+                padding: 10px;
+                background: #fafafa;
+                border: 1px solid #e2e2e2;
+                border-radius: 5px;
+                outline: none;
+            }
+        }
+
+        .signUp_btn{
+            padding: 10px 0;
+
+            .btn {
+                width: 300px;
+                border-radius: 5px;
+            }
+        }
+
+        .hr{
+            align-items: center;
+            border-bottom: 1px solid #b0b0b1;
+            display: flex;
+            margin: 20px 40px;
+            text-align: center;
+        }
+    }
+
+    .social-login{
+        display: inline-flex;
+        
+
+        .soci-box{
+            padding: 0 5px;
+            width: 150px;
+
+        }
+        .btn{
+            border: none;
+            color: #fff;
+
+            &:hover{
+                opacity: 0.9;
+            }
+        }
+
+        .btn-gmail{
+            background-color: #DB4437;
+        }
+        .btn-facebook{
+            background-color: #4267B2;
+        }
+        .btn-twitter{
+            background-color: #1DA1F2;
+        }
+
+        .fab{
+            padding: 0 5px;
+        }
+    }
+
+    .signUpConfirm{
+        color: #999;
+        font-size: 14px;
+    }
+
+    .botton_heading{
+        font-size: 1rem;
+        padding: 30px 0;
+        
+        a{
+            text-decoration: none;
+        }
+    }
+    
+}
