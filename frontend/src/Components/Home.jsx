@@ -28,7 +28,7 @@ function Home(){
                                 <div className="input">
                                     <input className="input_field" type="text" required placeholder="Username or email" autoCapitalize="off" autoCorrect="off"/>
                                 </div>
-                                <div className="input ">
+                                <div className="input">
                                     <input type="password" className="input_field" required placeholder="Password" autoCapitalize="off" autoCorrect="off"/>
                                 </div>
                                 <div className="submit_btn">
