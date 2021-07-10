@@ -10,6 +10,7 @@ function Home(){
                     <ul>
                         <li><a href="#">Features</a></li>
                         <li><a href="#">Privacy & Safety</a></li>
+                        <a className="btn btn-primary sign-up-btn" href="/sign-up">Sign Up</a>
                     </ul>
                 </div>
             </nav>
@@ -27,7 +28,7 @@ function Home(){
                                 <div className="input">
                                     <input className="input_field" type="text" required placeholder="Username or email" autoCapitalize="off" autoCorrect="off"/>
                                 </div>
-                                <div className="input ">
+                                <div className="input">
                                     <input type="password" className="input_field" required placeholder="Password" autoCapitalize="off" autoCorrect="off"/>
                                 </div>
                                 <div className="submit_btn">
@@ -45,6 +46,13 @@ function Home(){
                     </div>
                 </div>
             </section>
+            <footer>
+                <div className="container">
+                    <span className="copyright">© <strong>ViVi</strong> 2021. Above used trademarks belongs to their respective owners.</span>
+                    <span className="terms"><a href="/terms">Terms</a></span>
+                    <span className="footer-logo">ViVi</span>
+                </div>
+            </footer>
         </>
     )    
 }
