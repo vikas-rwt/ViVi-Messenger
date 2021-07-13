@@ -213,4 +213,256 @@ footer .container a {
 footer .container a:hover {
   color: #999;
 }
+
+section {
+  padding: 50px 0;
+}
+
+#sign-up-form {
+  height: 100vh;
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: center;
+  border: 1px solid #d4d4d4;
+  border-radius: 5px;
+}
+
+#sign-up-form .heading {
+  font-size: 2.5rem;
+  padding-top: 20px;
+}
+
+#sign-up-form .subheading {
+  font-size: 1rem;
+}
+
+#sign-up-form #signUpForm {
+  padding-top: 30px;
+}
+
+#sign-up-form #signUpForm .signUp_input {
+  padding: 5px 0;
+}
+
+#sign-up-form #signUpForm .signUp_input input {
+  width: 300px;
+  padding: 10px;
+  background: #fafafa;
+  border: 1px solid #e2e2e2;
+  border-radius: 5px;
+  outline: none;
+}
+
+#sign-up-form #signUpForm .signUp_btn {
+  padding: 10px 0;
+}
+
+#sign-up-form #signUpForm .signUp_btn .btn {
+  width: 300px;
+  border-radius: 5px;
+}
+
+#sign-up-form #signUpForm .hr {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-bottom: 1px solid #b0b0b1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 20px 40px;
+  text-align: center;
+}
+
+#sign-up-form .social-login {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+#sign-up-form .social-login .soci-box {
+  padding: 0 5px;
+  width: 150px;
+}
+
+#sign-up-form .social-login .btn {
+  border: none;
+  color: #fff;
+}
+
+#sign-up-form .social-login .btn:hover {
+  opacity: 0.9;
+}
+
+#sign-up-form .social-login .btn-gmail {
+  background-color: #DB4437;
+}
+
+#sign-up-form .social-login .btn-facebook {
+  background-color: #4267B2;
+}
+
+#sign-up-form .social-login .btn-twitter {
+  background-color: #1DA1F2;
+}
+
+#sign-up-form .social-login .fab {
+  padding: 0 5px;
+}
+
+#sign-up-form .signUpConfirm {
+  color: #999;
+  font-size: 14px;
+}
+
+#sign-up-form .botton_heading {
+  font-size: 1rem;
+  padding: 30px 0;
+}
+
+#sign-up-form .botton_heading a {
+  text-decoration: none;
+}
+
+.w-container {
+  background-color: #c4c4c4;
+  padding: 20px 40px;
+  border-radius: 25px;
+  max-width: 700px;
+  margin: 40px auto;
+}
+
+.w-container div {
+  padding: 10px 0;
+}
+
+.w-container input {
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  padding: 0 10px;
+  height: 40px;
+  background-color: #eee;
+}
+
+.w-container #nickname {
+  width: 100%;
+}
+
+.w-container #bio {
+  width: 100%;
+  height: 80px;
+}
+
+.w-container .mix-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 0 auto;
+}
+
+.w-container .mix-box input {
+  width: 300px;
+}
+
+.w-container .picture {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.w-container .picture img {
+  width: 100px;
+  height: 100px;
+  background-color: #eee;
+  border-radius: 20px;
+  border: none;
+}
+
+.w-container .picture ul {
+  list-style: none;
+  padding: 0;
+  margin: auto 0;
+}
+
+.w-container .picture ul li {
+  display: inline;
+  padding: 0 20px;
+}
+
+.w-container .picture ul a {
+  text-decoration: none;
+  padding: 10px;
+  background-color: #eee;
+  border-radius: 10px;
+}
+
+#search {
+  text-align: center;
+  outline: none;
+  border: none;
+  background-color: #D4DEEA;
+  width: 250px;
+  height: 40px;
+  border-radius: 10px;
+}
+
+#newChat {
+  text-decoration: none;
+  color: #fff;
+  background-color: #2A6CE5;
+  width: 250px;
+  height: 40px;
+  border-radius: 10px;
+  border: none;
+}
+
+#newChat:hover {
+  opacity: 0.90;
+}
+
+#img {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#img img {
+  width: 49px;
+  height: 49px;
+  border-radius: 50%;
+}
+
+#convo-container {
+  padding: 5px 0;
+  color: #091d34;
+  border-bottom: 1px solid #eee;
+  width: 250px;
+}
+
+#convo-container .user-name {
+  font-size: 18px;
+}
+
+#convo-container .convo-preview {
+  font-size: 14px;
+}
+
+#convo {
+  max-width: 90%;
+  margin: 0 auto;
+  background-color: #999;
+  border-radius: 10px;
+  line-height: 1.5;
+}
+
+#convo .convo-content {
+  padding: 1px 5px;
+}
 /*# sourceMappingURL=style.css.map */

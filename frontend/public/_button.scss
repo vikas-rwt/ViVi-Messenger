@@ -1,0 +1,15 @@
+#newChat {
+   text-decoration: none;
+   color: #fff;
+   background-color: #2A6CE5;
+   width: 250px;
+   height: 40px;
+   border-radius: 10px;
+   border: none;
+//    transition: all 0.3s ease-in-out;
+
+   &:hover {
+    //    transform: translateY(-2px);
+    opacity: 0.90;
+   }
+}

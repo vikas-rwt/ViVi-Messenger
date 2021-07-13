@@ -1,7 +1,60 @@
-import React from 'react';
+import {React,useState,useEffect} from 'react';
+import { useHistory } from "react-router-dom";
+import axios from "axios"
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Home(){
+
+    const history = useHistory();
+    const [userEmail,setUserEmail] = useState("");
+    const [userPassword,setUserPassword] = useState("");
+    // const [isAuthenticated,setIsAuthencticated] = (false);
+    function onChangeEventHandler(event){   
+        const value=event.target.value
+        if(event.target.name === "email"){
+            setUserEmail(value)
+            console.log("email : "+userEmail)
+        }else if(event.target.name === "password"){
+            setUserPassword(value)
+            console.log("Password : "+userPassword)
+        }
+    }
+
+
+    useEffect(()=>{
+        axios({
+            method:"GET",
+            withCredentials:true,
+            url:"http://localhost:5000/isAuth"
+        })
+        .then( response => console.log(response))
+    },[])
+
+
+    function onSubmitEventHandler(event){
+        event.preventDefault();
+        axios({
+            method:"POST",
+            data:{
+                email:userEmail,
+                password:userPassword
+            },
+            withCredentials:true,
+            url:"http://localhost:5000/login"
+        })
+        .then((response)=>{
+            console.log(response.data.status)
+            if(response.data.status === true){
+                history.push("/dashboard")
+            }
+        })
+        .catch(err =>{
+            console.log(err)
+        })
+
+    };
+
+
     return (
         <>
             <nav id="navbar">
@@ -10,6 +63,8 @@ function Home(){
                     <ul>
                         <li><a href="#">Features</a></li>
                         <li><a href="#">Privacy & Safety</a></li>
+                        <li><a href="/#" >Features</a></li>
+                        <li><a href="/#">Privacy & Safety</a></li>
                         <a className="btn btn-primary sign-up-btn" href="/sign-up">Sign Up</a>
                     </ul>
                 </div>
@@ -24,21 +79,22 @@ function Home(){
                         <div id="form" className="col-5">
                             <div className="form-inside">
                             <h4>Welcome back!</h4>
-                            <form className="loginForm" method="post" action="/login">
+                            {/* method="post" action="/login" */}
+                            <form className="loginForm" onSubmit={onSubmitEventHandler}>
                                 <div className="input">
-                                    <input className="input_field" type="text" required placeholder="Username or email" autoCapitalize="off" autoCorrect="off"/>
+                                    <input onChange={onChangeEventHandler} className="input_field" type="text" required placeholder="email address" autoCapitalize="off" autoCorrect="off" value={userEmail}  name="email"/>
                                 </div>
-                                <div className="input ">
-                                    <input type="password" className="input_field" required placeholder="Password" autoCapitalize="off" autoCorrect="off"/>
+                                <div className="input">
+                                    <input onChange={onChangeEventHandler} type="password" className="input_field" required placeholder="Password" autoCapitalize="off" autoCorrect="off" value={userPassword} name="password"/>
                                 </div>
                                 <div className="submit_btn">
-                                    <button className="btn btn-primary">Log In</button>
+                                    <button type="submit"  className="btn btn-primary">Log In</button>
                                 </div>
                                 <div className="hr"></div>
                                 <div className="social-login row">
-                                    <div className="col"><a className="btn btn-block btn-facebook" href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook"></i>Connect with Facebook</a></div>
-                                    <div className="col"><a className="btn btn-block btn-gmail" href="https://www.google.com" target="_blank"><i class="fab fa-google"></i>Connect with Gmail</a></div>
-                                    <div className="col"><a className="btn btn-block btn-twitter" href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i>Connect with Twitter</a></div>
+                                    <div className="col"><a className="btn btn-block btn-facebook" rel="noreferrer" href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook"></i>Connect with Facebook</a></div>
+                                    <div className="col"><a className="btn btn-block btn-gmail" rel="noreferrer" href="https://www.google.com" target="_blank"><i class="fab fa-google"></i>Connect with Gmail</a></div>
+                                    <div className="col"><a className="btn btn-block btn-twitter" rel="noreferrer" href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i>Connect with Twitter</a></div>
                                 </div>
                             </form>
                             </div>
