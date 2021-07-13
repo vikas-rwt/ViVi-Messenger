@@ -37,7 +37,7 @@ app.use(passport.initialize());
 app.use(passport.session())
 require("./authentication")(passport);
 
-//![Better comments extension] : Middlewares ends here
+//![Better comments extension] : Middlewares ends here where's the device section ?
 
 
 //TODO[Better comments extension] : Mongoose details starts here
@@ -139,7 +139,7 @@ app.route("/login")
     })
 
 
-// Login route ends here
+// Login route ends here wait pushing itok
 
 
 app.get('/auth/google',

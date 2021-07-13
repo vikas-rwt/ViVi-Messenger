@@ -58,11 +58,11 @@ function Home(){
     };
 
     const responseGoogle = response => {
-        console.log(response)
+        console.log("Google Oauth : "+response)
         axios({
             method:"POST",
             data:{provider:"",googleId:response.googleId},
-            withCredentials:true,
+            withCredentials:true, 
             url:"http://localhost:5000/auth/register"
         }).then(response => {
             console.log(response)

@@ -26,7 +26,7 @@ module.exports = function(passport){
     
     
     
-    //![Better comments extension] : Google Oauthetication starts here 
+    //![Better comments extension] : Google Oauthetication starts here
     
     
     passport.use(new GoogleStrategy({

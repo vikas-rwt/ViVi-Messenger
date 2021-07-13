@@ -47,7 +47,7 @@ function SignUp(){
     // OM8KMvvAF6XgWgNCm5HmSmWL
 
     const responseGoogle = response => {
-        console.log(response.googleId)
+        console.log(response)
         axios({
             method:"POST",
             data:{googleId:response.googleId},
