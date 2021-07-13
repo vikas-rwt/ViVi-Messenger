@@ -454,7 +454,7 @@ section {
   font-size: 14px;
 }
 
-#convo {
+#convo-received {
   max-width: 90%;
   margin: 0 auto;
   background-color: #999;
@@ -462,7 +462,20 @@ section {
   line-height: 1.5;
 }
 
-#convo .convo-content {
+#convo-received .convo-received-content {
   padding: 1px 5px;
+}
+
+#convo-sent {
+  max-width: 90%;
+  margin: 0 auto;
+  background-color: #2a6ce5;
+  border-radius: 10px;
+  line-height: 1.5;
+}
+
+#convo-sent .convo-sent-content {
+  padding: 1px 10px;
+  color: #fff;
 }
 /*# sourceMappingURL=style.css.map */
