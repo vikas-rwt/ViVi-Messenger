@@ -1,8 +1,10 @@
 import {React,useState,useEffect} from 'react';
 import { useHistory } from "react-router-dom";
 import axios from "axios"
+import env from "react-dotenv";
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import { GoogleLogin } from 'react-google-login';
+import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
 function Home(){
 
     const history = useHistory();
@@ -13,7 +15,7 @@ function Home(){
         const value=event.target.value
         if(event.target.name === "email"){
             setUserEmail(value)
-            console.log("email : "+userEmail)
+            console.log("email:"+userEmail)
         }else if(event.target.name === "password"){
             setUserPassword(value)
             console.log("Password : "+userPassword)
@@ -22,6 +24,7 @@ function Home(){
 
 
     useEffect(()=>{
+        // console.log("Process.env : "+ windows.env)
         axios({
             method:"GET",
             withCredentials:true,
@@ -53,6 +56,29 @@ function Home(){
         })
 
     };
+
+    const responseGoogle = response => {
+        console.log(response)
+        axios({
+            method:"POST",
+            data:{provider:"",googleId:response.googleId},
+            withCredentials:true,
+            url:"http://localhost:5000/auth/register"
+        }).then(response => {
+            console.log(response)
+            if(response.data.status){
+                console.log("You are authenticated")
+            }else{
+                console.log("Authentication failed")
+            }
+        })
+    }
+
+    const responseFacebook = response =>{
+        console.log(response)
+    }
+
+
 
 
     return (
@@ -90,9 +116,33 @@ function Home(){
                                 </div>
                                 <div className="hr"></div>
                                 <div className="social-login row">
-                                    <div className="col"><a className="btn btn-block btn-facebook" rel="noreferrer" href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook"></i>Connect with Facebook</a></div>
-                                    <div className="col"><a className="btn btn-block btn-gmail" rel="noreferrer" href="https://www.google.com" target="_blank"><i class="fab fa-google"></i>Connect with Gmail</a></div>
-                                    <div className="col"><a className="btn btn-block btn-twitter" rel="noreferrer" href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i>Connect with Twitter</a></div>
+                                    <div className="col">
+                                    <FacebookLogin
+                                        appId="1128461224319367"
+                                        autoLoad={true}
+                                        callback={responseFacebook}
+                                        render={renderProps => (
+                                            <button className="btn btn-block btn-facebook" onClick={renderProps.onClick}><i class="fab fa-facebook"></i>Connect with Facebook</button>
+                                        )}
+                                    />
+                                    </div>
+
+                                    <div className="col">
+                                    <GoogleLogin
+                                        clientId="836635343228-rqnc8q45iceoaot8qdnm93au67vv2ldf.apps.googleusercontent.com"
+                                        render={renderProps => (
+                                        <button className="btn btn-block btn-google" onClick={renderProps.onClick} disabled={renderProps.disabled}><i class="fab fa-google"></i>Connect with Google</button>
+                                        )}
+                                        buttonText="Login"
+                                        onSuccess={responseGoogle}
+                                        onFailure={responseGoogle}
+                                        cookiePolicy={'single_host_origin'}
+                                        isSignedIn={true}
+                                    />
+                                    </div>
+                                    <div className="col">
+                                    <a className="btn btn-block btn-twitter" rel="noreferrer" href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i>Connect with Twitter</a>
+                                    </div>
                                 </div>
                             </form>
                             </div>

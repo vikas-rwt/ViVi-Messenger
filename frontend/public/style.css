@@ -174,7 +174,7 @@ body {
   color: #fff;
 }
 
-#form .social-login .col .btn-gmail {
+#form .social-login .col .btn-google {
   border: 1px solid #000;
 }
 
@@ -294,7 +294,7 @@ section {
   opacity: 0.9;
 }
 
-#sign-up-form .social-login .btn-gmail {
+#sign-up-form .social-login .btn-google {
   background-color: #DB4437;
 }
 

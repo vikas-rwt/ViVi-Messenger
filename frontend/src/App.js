@@ -1,6 +1,8 @@
 import React from 'react';
 import Home from './Components/Home';
 import SignUp from './Components/SignUp';
+import Dashboard from './Components/Dashboard.jsx';
+import {BrowserRouter as Router,Route,Switch} from "react-router-dom"
 import Profile from './Components/Profile';
 import Search from './Components/Search';
 import Button from './Components/Button';
@@ -13,7 +15,13 @@ import Status from './Components/Status';
 function App() {
   return (
     <>
-      <Status />
+    <Router>
+      <Switch>
+        <Route path="/" exact component={Home}></Route>
+        <Route path="/sign-up"  component={SignUp}></Route>
+        <Route paths="/dashboard" component={Dashboard}/>
+      </Switch>
+    </Router>
     </>
   )
 }

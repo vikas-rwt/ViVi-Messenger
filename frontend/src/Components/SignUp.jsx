@@ -46,7 +46,22 @@ function SignUp(){
     // 836635343228-rqnc8q45iceoaot8qdnm93au67vv2ldf.apps.googleusercontent.com
     // OM8KMvvAF6XgWgNCm5HmSmWL
 
-    const responseGoogle = response => console.log(response)
+    const responseGoogle = response => {
+        console.log(response.googleId)
+        axios({
+            method:"POST",
+            data:{googleId:response.googleId},
+            withCredentials:true,
+            url:"http://localhost:5000/auth/google"
+        }).then(response => {
+            console.log(response)
+            if(response.data.status){
+                console.log("You are authenticated")
+            }else{
+                console.log("Authentication failed")
+            }
+        })
+    }
 
     return (
         <>
@@ -68,12 +83,15 @@ function SignUp(){
                             <div className="soci-box"><a className="btn btn-block btn-facebook"  rel="noreferrer" href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook"></i>Facebook</a></div>
                             <GoogleLogin
                                 clientId="836635343228-rqnc8q45iceoaot8qdnm93au67vv2ldf.apps.googleusercontent.com"
+                                render={renderProps => (
+                                <button className="btn btn-block btn-google" onClick={renderProps.onClick} disabled={renderProps.disabled}><i class="fab fa-google"></i>Google</button>
+                                )}
                                 buttonText="Login"
                                 onSuccess={responseGoogle}
                                 onFailure={responseGoogle}
                                 cookiePolicy={'single_host_origin'}
                                 isSignedIn={true}
-                            />,
+                            />
                             <div className="soci-box"><a className="btn btn-block btn-twitter"  rel="noreferrer" href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i>Twitter</a></div>
                         </div>
                         <h3 className="botton_heading">Have an account? <a href="/signin">Sign In</a></h3>
