@@ -49,22 +49,18 @@ mongoose.set("useCreateIndex",true);
 //TODO[Better comments extension] :   Mongoose details ends here
 
 
-
-
-
-
-
-
 // Home page route starts here
 
 app.get("/isAuth",(req,res)=>{
-    console.log(req.sessionID)
+    // console.log(req.sessionID)
     if(req.isAuthenticated()){
+      console.log("User authenticated")
       res.json({
         status:true,
         message:"user is authenticated already"
       })
     }else{
+      console.log("User isn\'t authenticated")
       res.json({
         status:false,
         message:"user isn't authenticated"
@@ -141,28 +137,35 @@ app.route("/login")
 
 // Login route ends here
 
+//Google login starts here
 
-app.get('/auth/google',
-passport.authenticate('google', { scope: ['profile'] })
-);
-app.get('/auth/google/home', passport.authenticate('google', { failureRedirect: '/login' }),function(req, res) {
-  res.redirect('/');
-});
+app.post("/auth/register",(req,res)=>{
+  passport.authenticate("custom",(err,user,info)=>{
+    if(err){
+      console.log(err)
+    }else{
+      console.log("POST : "+user)
+      if(!user){
+        console.log("User not found")
+      }else{
+        console.log(user)
+        req.logIn(user,err =>{
+          if(err) throw err;
+          res.json({
+            status:true,
+            message:"Successfully authenticated"
+          })
+          console.log("req.user = "+req.user)
+      })
+      }
+    }
+  })(req,res);
+}
+)
 
 
-app.get('/auth/facebook',passport.authenticate('facebook'));
-    
-app.get('/auth/facebook/home',passport.authenticate('facebook', { failureRedirect: '/login' }),function(req, res) {
-    res.redirect('/');
-  });
 
-
-
-
-
-
-
-
+// Google login ends here
 
 
 app.listen(PORT,()=>{
