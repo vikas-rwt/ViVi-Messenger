@@ -2,6 +2,7 @@ const User = require("./user")
 const LocalStrategy = require('passport-local').Strategy;
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
+const CustomStrategy = require("passport-custom").Strategy;
 const bcrypt = require("bcrypt")
 
 
@@ -94,8 +95,49 @@ module.exports = function(passport){
           });
         }
     ))
+
     
     //TODO[Better comments extension] : Local Oauthetication ends here
+
+
+// Custom authentication starts here 
+
+
+
+passport.use("custom",new CustomStrategy(
+  function(req, done) {
+    console.log("Custom_req.body : "+req.body)
+    User.findOne({
+      googleId: req.body.googleId
+    },async function (err, user) {
+      if(err){
+        console.log(err)
+        done(err,false)
+      }else{
+        if(user){
+          console.log(user)
+          done(err,user)
+        }else{
+          const newUser = new User({
+            googleId:req.body.googleId,
+          })
+          const new_user = await newUser.save()
+          console.log(newUser)
+          console.log(new_user)
+          done(err,new_user)
+        }
+      }
+    });
+  }
+));
+
+
+
+
+
+
+// Custom authentication ends here
+
 
 
 
