@@ -28,8 +28,8 @@ function Profile(){
                     <div className='picture'>
                         <img src="" alt="Profile"/>
                         <ul>
-                            <li><a href="#">Upload new picture</a></li>
-                            <li><a href="#">Remove</a></li>
+                            {/* <li><a href="/#">Upload new picture</a></li>
+                            <li><a href="#">Remove</a></li> */}
                         </ul>
                     </div>
                 </div>

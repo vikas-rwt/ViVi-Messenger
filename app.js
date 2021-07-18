@@ -49,7 +49,7 @@ mongoose.set("useCreateIndex",true);
 //TODO[Better comments extension] :   Mongoose details ends here
 
 
-// Home page route starts here
+// Home page route starts here pubg/india.com
 
 app.get("/isAuth",(req,res)=>{
     // console.log(req.sessionID)
@@ -83,7 +83,11 @@ app.route("/register")
           console.log(err)
         }else{
           if(doc){
-            res.send("Account already exist")
+            res.json({
+              type:"register",
+              status:false,
+              message:"Account already exist"
+            })
           }else{
             if(!doc){
               bcrypt.hash(req.body.password, 10,async function(err, hash) {
@@ -91,11 +95,19 @@ app.route("/register")
                   console.log(err)
                 }else{
                   const newUser = new User({
+                    username:req.body.username,
+                    age:req.body.age,
                     email:req.body.email,
                     password:hash
                   })
                   await newUser.save()
-                  res.send("Account created")
+                  res.json({
+                    type:"register",
+                    status:true,
+                    email:req.body.email,
+                    message:"account registered successfully"
+                  })
+
                 }
             });
             }
@@ -115,20 +127,28 @@ app.route("/login")
     })
     .post((req,res)=>{
       console.log(req.body)
-      passport.authenticate("local",(err,user,info)=>{
+      passport.authenticate("local",(err,user,password)=>{
         if(err) throw err;
         if(!user) res.send("No user found");
         else{
-          if(user){
-            console.log(user)
-            req.logIn(user,err =>{
-              if(err) throw err;
-              res.json({
-                status:true,
-                message:"Successfully authenticated"
-              })
-              console.log("req.user = "+req.user)
-          })
+          if(password){
+            if(user){
+              console.log(user)
+              req.logIn(user,err =>{
+                if(err) throw err;
+                res.json({
+                  status:true,
+                  message:"Successfully authenticated"
+                })
+                console.log("req.user = "+req.user)
+            })
+            }
+          }else{
+            res.json({
+              status:false,
+              message:"password incorrect",
+              type:"password"
+            })
           }
         }
       })(req,res);
@@ -140,12 +160,16 @@ app.route("/login")
 //Google login starts here
 
 app.post("/auth/register",(req,res)=>{
-  passport.authenticate("custom",(err,user,info)=>{
+  passport.authenticate("customRegister",(err,user,info)=>{
     if(err){
       console.log(err)
     }else{
       console.log("POST : "+user)
       if(!user){
+        res.json({
+          status:false,
+          message:"user not found"
+        })
         console.log("User not found")
       }else{
         console.log(user)
@@ -163,12 +187,11 @@ app.post("/auth/register",(req,res)=>{
 }
 )
 
-
-
 // Google login ends here
 
 
 app.listen(PORT,()=>{
     console.log(`Server started on port ${PORT}`)
 })
+
 
