@@ -85,9 +85,9 @@ module.exports = function(passport){
                   done(err)
                 }else{
                   if(result){
-                    return done(null, user);
+                    return done(null, user,true);
                   }else{
-                    return done(null, false);
+                    return done(null, user,false);
                   }
                 }
             });
@@ -104,12 +104,17 @@ module.exports = function(passport){
 
 
 
-passport.use("custom",new CustomStrategy(
+passport.use("customRegister",new CustomStrategy(
   function(req, done) {
+    var provider_id = {}
     console.log("Custom_req.body : "+req.body)
-    User.findOne({
-      googleId: req.body.googleId
-    },async function (err, user) {
+    if(req.body.provider==="Google"){
+      provider_id = {googleId:req.body.googleId}
+    }else{
+      provider_id = {facebookId:req.body.facebookId}
+    }
+    console.log("ID : "+provider_id)
+    User.findOne(provider_id,async function (err, user) {
       if(err){
         console.log(err)
         done(err,false)
@@ -118,20 +123,20 @@ passport.use("custom",new CustomStrategy(
           console.log(user)
           done(err,user)
         }else{
-          const newUser = new User({
-            googleId:req.body.googleId,
-          })
-          const new_user = await newUser.save()
-          console.log(newUser)
-          console.log(new_user)
-          done(err,new_user)
+          if(req.body.type==="register"){
+            const newUser = new User(provider_id)
+            const new_user = await newUser.save()
+            console.log(newUser)
+            console.log(new_user)
+            done(err,new_user)
+          }else if(req.body.type==="login"){
+            done(err,null)
+          }
         }
       }
     });
   }
 ));
-
-
 
 
 
