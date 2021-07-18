@@ -1,16 +1,16 @@
 import {React,useState,useEffect} from 'react';
-import { useHistory } from "react-router-dom";
-import axios from "axios"
-import env from "react-dotenv";
+import axios from "axios";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { GoogleLogin } from 'react-google-login';
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
-function Home(){
 
-    const history = useHistory();
+
+function Home(props){
+
     const [userEmail,setUserEmail] = useState("");
     const [userPassword,setUserPassword] = useState("");
-    // const [isAuthenticated,setIsAuthencticated] = (false);
+    const [isAuthenticated,setIsAuthencticated] = useState(false);
+    const [isCorrectPassword,setIsCorrectPassword] = useState(true)
     function onChangeEventHandler(event){   
         const value=event.target.value
         if(event.target.name === "email"){
@@ -30,7 +30,11 @@ function Home(){
             withCredentials:true,
             url:"http://localhost:5000/isAuth"
         })
-        .then( response => console.log(response))
+        .then( response => {
+            setIsAuthencticated(response.data.status)
+            console.log("is auth ? : "+isAuthenticated)
+        })
+        // eslint-disable-next-line
     },[])
 
 
@@ -46,10 +50,15 @@ function Home(){
             url:"http://localhost:5000/login"
         })
         .then((response)=>{
-            console.log(response.data.status)
-            if(response.data.status === true){
-                history.push("/dashboard")
+            console.log(response)
+            if(response.data.status === false){
+                if(response.data.type === "password"){
+                    setIsCorrectPassword(false)
+                }
+            }else{
+                setIsCorrectPassword(true)
             }
+            props.auth(response.data.status)
         })
         .catch(err =>{
             console.log(err)
@@ -57,27 +66,33 @@ function Home(){
 
     };
 
-    const responseGoogle = response => {
-        console.log("Google Oauth : "+response)
+    function responseGoogle(response){
         axios({
             method:"POST",
-            data:{provider:"",googleId:response.googleId},
-            withCredentials:true, 
+            data:{provider:"Facebook",googleId:response.googleId,type:"login"},
+            withCredentials:true,
             url:"http://localhost:5000/auth/register"
-        }).then(response => {
+
+        }).then(response =>{
+            props.auth(response.data.status)
             console.log(response)
-            if(response.data.status){
-                console.log("You are authenticated")
-            }else{
-                console.log("Authentication failed")
-            }
         })
     }
 
+
     const responseFacebook = response =>{
         console.log(response)
-    }
+        axios({
+            method:"POST",
+            data:{provider:"Facebook",facebookId:response.id,type:"login"},
+            withCredentials:true,
+            url:"http://localhost:5000/auth/register"
 
+        }).then(response =>{
+            props.auth(response.data.status)
+            console.log(response)
+        })
+    }
 
 
 
@@ -87,8 +102,9 @@ function Home(){
                 <div className="logo">ViVi</div>
                 <div className="nav__menu">
                     <ul>
-                        <li><a href="#">Features</a></li>
-                        <li><a href="#">Privacy & Safety</a></li>
+                        
+                        <li><a href="/#">Features</a></li>
+                        <li><a href="/#">Privacy & Safety</a></li>
                         <li><a href="/#" >Features</a></li>
                         <li><a href="/#">Privacy & Safety</a></li>
                         <a className="btn btn-primary sign-up-btn" href="/sign-up">Sign Up</a>
@@ -113,6 +129,7 @@ function Home(){
                                 <div className="input">
                                     <input onChange={onChangeEventHandler} type="password" className="input_field" required placeholder="Password" autoCapitalize="off" autoCorrect="off" value={userPassword} name="password"/>
                                 </div>
+                                {isCorrectPassword ? null:<p style={{color:"red"}}>Password incorrect</p>}
                                 <div className="submit_btn">
                                     <button type="submit"  className="btn btn-primary">Log In</button>
                                 </div>
@@ -133,7 +150,7 @@ function Home(){
                                     <GoogleLogin
                                         clientId="836635343228-rqnc8q45iceoaot8qdnm93au67vv2ldf.apps.googleusercontent.com"
                                         render={renderProps => (
-                                        <button className="btn btn-block btn-google" onClick={renderProps.onClick} disabled={renderProps.disabled}><i class="fab fa-google"></i>Connect with Google</button>
+                                         <button className="btn btn-block btn-google" onClick={renderProps.onClick}><i class="fab fa-google"></i>Connect with Google</button>
                                         )}
                                         buttonText="Login"
                                         onSuccess={responseGoogle}
@@ -141,9 +158,6 @@ function Home(){
                                         cookiePolicy={'single_host_origin'}
                                         isSignedIn={true}
                                     />
-                                    </div>
-                                    <div className="col">
-                                    <a className="btn btn-block btn-twitter" rel="noreferrer" href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i>Connect with Twitter</a>
                                     </div>
                                 </div>
                             </form>
