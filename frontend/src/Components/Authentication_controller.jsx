@@ -20,7 +20,7 @@ export default function Authentication_controller(){
 
     return(
         <>
-            {isAuthenticated ? <h1>You are authenticated</h1> : <Home auth={setIsAuthenticated}/>}
+            {isAuthenticated ? <h1>You are in conversation section</h1> : <Home auth={setIsAuthenticated}/>}
         </>
     )
 }
