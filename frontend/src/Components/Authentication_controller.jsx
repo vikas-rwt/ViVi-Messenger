@@ -1,7 +1,6 @@
 import React,{useState,useEffect}  from 'react';
 import Home from "./Home.jsx"
-import axios from "axios";
-
+import axios from "axios";//this is all about login for now,we need to add more styles later ye
 
 export default function Authentication_controller(){
 
@@ -21,6 +20,6 @@ export default function Authentication_controller(){
     return(
         <>
             {isAuthenticated ? <h1>You are in conversation section</h1> : <Home auth={setIsAuthenticated}/>}
-        </>
+        </> 
     )
 }

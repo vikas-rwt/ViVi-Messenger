@@ -13,3 +13,7 @@ function Convo_Sent(){
 }
 
 export default Convo_Sent;
+
+
+// these are 2 components, same style and everything but diff id for text in and out, remove the text when you test
+//seee 
