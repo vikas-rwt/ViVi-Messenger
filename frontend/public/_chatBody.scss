@@ -1,0 +1,79 @@
+#chat-container{
+    max-width: 350px;
+    background-color: #c4c4c4;
+    height: 750px;
+    text-align: center;
+
+    .logo {
+        font-size: 30px;
+        font-weight: 800;
+        text-align: left;
+        padding: 10px;
+    }
+
+    .component {
+        margin: 20px 0;
+    }
+}
+
+.friend1{
+    // position: absolute;
+    // z-index: 33;
+    // transform: translateY(72px);
+    margin-top: 30px;
+
+    .friend1-box{
+        margin: 5px;
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        box-sizing: border-box;
+    }
+
+    .friendImg-box{
+        align-items: center;
+        position: relative;
+        padding: 0 15px;
+
+
+        .friendImg{
+            display: flex;
+            // width: 75px;
+            // height: 75px;
+            align-items: center;
+        }
+    }
+
+    
+
+
+    .friendDetail {
+        display: flex;
+        flex-direction: column;
+        // overflow: hidden;
+        flex-grow: 1;
+        
+        
+
+        .friendName {
+            display: flex;
+            align-items: center;
+            line-height: normal;
+            font-size: 18px;
+            // overflow: hidden;
+            font-weight: 400;
+            // flex-grow: 1;
+            padding-left: 20px;
+        }
+
+        .friendMsg {
+            display: flex;
+            align-items: center;
+            min-height: 20px;
+            line-height: 20px;
+            font-size: 13px;
+            margin-top: 5px;
+            padding-left: 20px;
+        }
+    }
+}

@@ -4,9 +4,9 @@ function Convo_Received(){
     return (
         <>
         <div id="convo-received">
-            <p className='convo-sent-content'>
-                I’m pretty good, what about you?
-            </p>
+            <span className='convo-received-content'>
+                <span>I’m pretty good, what about you?</span>
+            </span>
         </div>
         </>
     )
