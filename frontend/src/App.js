@@ -9,19 +9,25 @@ import Button from './Components/Button';
 import User_Img from './Components/User_Img';
 import User_Convo from './Components/User_Convo';
 import Convo_Received from './Components/Convo_Received';
-import Convo_Sent from './Components/Convo-Sent';
+import Convo_Sent from './Components/Convo_Sent';
 import Status from './Components/Status';
+import Chat_Body from './Components/Chat_body';
+import Friend_name from './Components/Friend_name';
+import Conversation_body from './Components/Conversation_body';
 
+// u there ? verifiation required : where he gone ? i wil send you my server link/ address, hmm ok bha ok i have to for 1 min
+ 
 function App() {
   return (
     <>
-    <Router>
+    {/* <Router>
       <Switch>
         <Route path="/" exact component={Home}></Route>
         <Route path="/sign-up"  component={SignUp}></Route>
         <Route paths="/dashboard" component={Dashboard}/>
       </Switch>
-    </Router>
+    </Router> */}
+    <Conversation_body />
     </>
   )
 }

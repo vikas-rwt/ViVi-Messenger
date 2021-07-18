@@ -1,11 +1,28 @@
 #convo-received{
-    max-width: 90%;
-    margin: 0 auto;
-    background-color: #999;
+
+    // * {
+    //     margin: 0;
+    //     padding: 0;
+    //     box-sizing: border-box;
+    // }
+
+    max-width: 100%;
+    // margin: 0 auto;
+    // background-color: #999;
     border-radius: 10px;
     line-height: 1.5;
 
     .convo-received-content{
-        padding: 1px 5px;
+        display: flex;
+        margin-bottom: 12px;
+        position: relative;
+        // max-width: 80%;
+
+        span {
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 10px;
+            max-width: 80%;
+        }
     }
 }
