@@ -21,7 +21,13 @@
     }
     #bio{
         width: 100%;
-        height: 80px;
+        // height: 80px;
+        border-radius: 10px;
+        border: none;
+        background-color: #eee;
+        outline: none;
+        padding: 5px;
+        resize: none;
     }
     .mix-box{
         display: flex;

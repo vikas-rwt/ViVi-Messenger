@@ -351,7 +351,12 @@ section {
 
 .w-container #bio {
   width: 100%;
-  height: 80px;
+  border-radius: 10px;
+  border: none;
+  background-color: #eee;
+  outline: none;
+  padding: 5px;
+  resize: none;
 }
 
 .w-container .mix-box {
@@ -413,6 +418,12 @@ section {
   border-radius: 10px;
 }
 
+#search::-webkit-search-cancel-button {
+  display: none;
+  height: 0;
+  width: 0;
+}
+
 #newChat {
   text-decoration: none;
   color: #fff;
@@ -455,27 +466,373 @@ section {
 }
 
 #convo-received {
-  max-width: 90%;
-  margin: 0 auto;
-  background-color: #999;
+  max-width: 100%;
   border-radius: 10px;
   line-height: 1.5;
 }
 
 #convo-received .convo-received-content {
-  padding: 1px 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 12px;
+  position: relative;
+}
+
+#convo-received .convo-received-content span {
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  max-width: 80%;
 }
 
 #convo-sent {
-  max-width: 90%;
-  margin: 0 auto;
-  background-color: #2a6ce5;
+  max-width: 80%;
   border-radius: 10px;
   line-height: 1.5;
 }
 
 #convo-sent .convo-sent-content {
-  padding: 1px 10px;
-  color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 12px;
+}
+
+#convo-sent .convo-sent-content span {
+  background-color: #2a6ce5;
+  padding: 10px;
+  border-radius: 10px;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+#status-btn {
+  background-color: #FFB232;
+  border: none;
+  border-radius: 15px;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+#status-btn img {
+  padding: 5px;
+}
+
+#overlay .tooltip-inner {
+  background-color: #EEF0FB;
+  color: #091D34;
+  border-radius: 5px;
+}
+
+#overlay .arrow {
+  display: none;
+}
+
+#overlay img {
+  width: 20px;
+  height: 20px;
+}
+
+#overlay .btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  margin: 10px 0;
+  padding: 4px 8px;
+  background-color: #c4c4c4;
+  border-radius: 10px;
+  border: none;
+}
+
+#overlay .btn div {
+  padding: 10px;
+  font-weight: 600;
+}
+
+#chat-container {
+  max-width: 350px;
+  background-color: #c4c4c4;
+  height: 750px;
+  text-align: center;
+}
+
+#chat-container .logo {
+  font-size: 30px;
+  font-weight: 800;
+  text-align: left;
+  padding: 10px;
+}
+
+#chat-container .component {
+  margin: 20px 0;
+}
+
+.friend1 {
+  margin-top: 30px;
+}
+
+.friend1 .friend1-box {
+  margin: 5px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.friend1 .friendImg-box {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  padding: 0 15px;
+}
+
+.friend1 .friendImg-box .friendImg {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.friend1 .friendDetail {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+.friend1 .friendDetail .friendName {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  line-height: normal;
+  font-size: 18px;
+  font-weight: 400;
+  padding-left: 20px;
+}
+
+.friend1 .friendDetail .friendMsg {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-height: 20px;
+  line-height: 20px;
+  font-size: 13px;
+  margin-top: 5px;
+  padding-left: 20px;
+}
+
+#friendName {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+#conversation-body {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  background-color: #EEF0FB;
+  max-width: 65%;
+}
+
+#conversation-body .friendBar {
+  background-color: aqua;
+  padding: 10px 16px;
+  position: relative;
+  z-index: 1000;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  height: 60px;
+}
+
+#conversation-body .friendBar span {
+  margin: 0 10px;
+}
+
+#conversation-body .convo-body {
+  position: relative;
+  z-index: 1;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 0px;
+          flex: 1 1 0;
+  -webkit-box-ordinal-group: 3;
+      -ms-flex-order: 2;
+          order: 2;
+  height: 80vh;
+}
+
+#conversation-body .convo-body .message {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 0 3%;
+}
+
+#conversation-body .convo-body .message.out {
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+#conversation-body #footer {
+  position: relative;
+  z-index: 1;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-box-flex: 0;
+      -ms-flex: none;
+          flex: none;
+  -webkit-box-ordinal-group: 4;
+      -ms-flex-order: 3;
+          order: 3;
+  width: 100%;
+  min-height: 60px;
+}
+
+#conversation-body #footer .t-container {
+  position: relative;
+  z-index: 2;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  min-width: 100%;
+  min-height: 60px;
+  padding: 5px 10px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #999;
+}
+
+#conversation-body #footer .t-container .typing-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  min-height: 60px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 10px 0 0 10px;
+  min-width: 85%;
+}
+
+#conversation-body #footer .t-container .typing-box .media-upload {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0px 10px;
+}
+
+#conversation-body #footer .t-container .typing-box .typing {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  width: inherit;
+  min-width: 0;
+  min-height: 20px;
+  font-size: 15px;
+  font-weight: 400;
+  outline: none;
+  will-change: width;
+  background-color: #eee;
+  padding: 9px 12px 11px;
+  margin: 5px 10px;
+  border: 1px solid #eee;
+  border-radius: 20px;
+}
+
+#conversation-body #footer .t-container .typing-box .typing .typing2 {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  overflow: hidden;
+}
+
+#conversation-body #footer .t-container .typing-box .typing #typing {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  min-height: 20px;
+  max-height: 100px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  font-size: 15px;
+  font-weight: 400;
+  color: #000;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  outline: none;
+}
+
+#conversation-body #footer .t-container .audio-send-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  min-height: 60px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-left: 1px;
+  border-radius: 0 10px 10px 0;
+}
+
+#conversation-body #footer .t-container .audio-send-box .bt {
+  padding: 6px 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 /*# sourceMappingURL=style.css.map */
