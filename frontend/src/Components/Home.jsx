@@ -69,7 +69,7 @@ function Home(props){
     function responseGoogle(response){
         axios({
             method:"POST",
-            data:{provider:"Facebook",googleId:response.googleId,type:"login"},
+            data:{provider:"Google",googleId:response.googleId,type:"login"},
             withCredentials:true,
             url:"http://localhost:5000/auth/register"
 
