@@ -1,0 +1,45 @@
+#status-btn{
+    background-color: #FFB232;
+    border: none;
+    border-radius: 15px;
+    box-shadow: none;
+
+    img {
+        padding: 5px;
+    }
+}
+
+#overlay {
+
+    .tooltip-inner{
+        background-color: #EEF0FB;
+        color: #091D34;
+        border-radius: 5px;
+    }
+
+    .arrow{
+        display: none;
+    }
+
+    img {
+        width: 20px;
+        height: 20px;
+    }
+
+
+    .btn {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        margin: 10px 0;
+        padding: 4px 8px;
+        background-color: #c4c4c4;
+        border-radius: 10px;
+        border: none;
+
+        div {
+            padding: 10px;
+            font-weight: 600;
+        }
+    }
+}

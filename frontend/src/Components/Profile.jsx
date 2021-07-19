@@ -10,7 +10,7 @@ function Profile(){
                     </div>
                     <div className="bio">
                         <label>Bio</label><br />
-                        <input type="text" name="bio" id="bio" />
+                        <textarea name="bio" id="bio" rows="3"></textarea>
                     </div>
                     <div className="mix-box">
                         <div className="email">

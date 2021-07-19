@@ -138,7 +138,7 @@ function Home(props){
                                     <div className="col">
                                     <FacebookLogin
                                         appId="1128461224319367"
-                                        autoLoad={true}
+                                        autoLoad={false}
                                         callback={responseFacebook}
                                         render={renderProps => (
                                             <button className="btn btn-block btn-facebook" onClick={renderProps.onClick}><i class="fab fa-facebook"></i>Connect with Facebook</button>
@@ -156,7 +156,7 @@ function Home(props){
                                         onSuccess={responseGoogle}
                                         onFailure={responseGoogle}
                                         cookiePolicy={'single_host_origin'}
-                                        isSignedIn={true}
+                                        isSignedIn={false}
                                     />
                                     </div>
                                 </div>
