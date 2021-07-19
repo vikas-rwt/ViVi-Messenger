@@ -1,6 +1,6 @@
 import React from 'react';
 
-function User_Convo(){
+function UserConvo(){
     return (
         <div id='convo-container'>
             <div className='user-name'>Jolly</div>
@@ -9,4 +9,4 @@ function User_Convo(){
     )
 }
 
-export default User_Convo;
+export default UserConvo;

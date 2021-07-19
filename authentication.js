@@ -107,34 +107,52 @@ module.exports = function(passport){
 passport.use("customRegister",new CustomStrategy(
   function(req, done) {
     var provider_id = {}
-    console.log("Custom_req.body : "+req.body)
+    console.log("Custom_req.body : "+ JSON.stringify(req.body))
     if(req.body.provider==="Google"){
-      provider_id = {googleId:req.body.googleId}
-    }else{
-      provider_id = {facebookId:req.body.facebookId}
-    }
-    console.log("ID : "+provider_id)
-    User.findOne(provider_id,async function (err, user) {
-      if(err){
-        console.log(err)
-        done(err,false)
-      }else{
-        if(user){
-          console.log(user)
-          done(err,user)
+      User.findOne({googleId:req.body.googleId},async function (err, user) {
+        if(err){
+          console.log(err)
+          done(err,false)
         }else{
-          if(req.body.type==="register"){
-            const newUser = new User(provider_id)
-            const new_user = await newUser.save()
-            console.log(newUser)
-            console.log(new_user)
-            done(err,new_user)
-          }else if(req.body.type==="login"){
-            done(err,null)
+          if(user){
+            console.log(user)
+            done(err,user)
+          }else{
+            if(req.body.type==="register"){
+              const newUser = new User(provider_id)
+              const new_user = await newUser.save()
+              console.log(newUser)
+              console.log(new_user)
+              done(err,new_user)
+            }else if(req.body.type==="login"){
+              done(err,null)
+            }
           }
         }
-      }
-    });
+      })
+    }else if(req.body.provider==="Facebook"){
+      User.findOne({facebookId:req.body.facebookId},async function (err, user) {
+        if(err){
+          console.log(err)
+          done(err,false)
+        }else{
+          if(user){
+            console.log(user)
+            done(err,user)
+          }else{
+            if(req.body.type==="register"){
+              const newUser = new User(provider_id)
+              const new_user = await newUser.save()
+              console.log(newUser)
+              console.log(new_user)
+              done(err,new_user)
+            }else if(req.body.type==="login"){
+              done(err,null)
+            }
+          }
+        }
+      })
+    }
   }
 ));
 
